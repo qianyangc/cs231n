@@ -99,7 +99,8 @@ class TwoLayerNet(object):
         # classifier loss.                                                          #
         #############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+        
+        scores = (scores.T - np.mean(scores, axis=1)).T  # normalise scores
         exp_scores = np.exp(scores)
         sum_scores = np.sum(exp_scores, axis=1)
         prob = exp_scores[np.arange(N), y] / sum_scores
